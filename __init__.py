@@ -61,7 +61,7 @@ def kill_all_by_cwd_and_subfolders(cwd: str, signal: int = 15):
     python_processes = []
     for proc in psutil.process_iter(["pid", "name", "cmdline", "cwd"]):
         pcwd: str = proc.info["cwd"]
-        if pcwd.startswith(cwd):
+        if pcwd and pcwd.startswith(cwd):
             python_processes.append(proc.info)
 
     # Now we retrieve the juniors)?
