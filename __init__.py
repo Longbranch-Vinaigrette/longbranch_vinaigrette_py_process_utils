@@ -50,3 +50,11 @@ def kill_all_by_cwd(cwd: str, signal: int = 15):
 
         # Kill
         os.kill(pid, signal)
+
+
+def check_is_app_running_by_cwd(cwd: str) -> bool:
+    """Check if the app is running by the given cwd"""
+    if len(get_processes_by_cwd(cwd)) > 0:
+        return True
+    else:
+        return False
